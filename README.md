@@ -1,5 +1,9 @@
 # Fcmex
 
+[![Build Status](https://travis-ci.org/shufo/fcmex.svg?branch=master)](https://travis-ci.org/shufo/fcmex)
+[![Hex.pm](https://img.shields.io/hexpm/v/fcmex.svg)](https://hex.pm/packages/fcmex)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-9768d1.svg)](https://hexdocs.pm/fcmex)
+
 A Firebase Cloud Message client for Elixir
 
 ## Installation
