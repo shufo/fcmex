@@ -1,0 +1,34 @@
+[
+  {
+    "request": {
+      "body": "{\"to\":null,\"time_to_live\":null,\"registration_ids\":[\"FCM_TOKEN\",\"FCM_TOKEN\",\"foobar\"],\"priority\":\"high\",\"notification\":{},\"data\":{\"foo\":\"bar\"},\"collapse_key\":null}",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "***"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://fcm.googleapis.com/fcm/send"
+    },
+    "response": {
+      "body": "{\"multicast_id\":7454080109617548280,\"success\":1,\"failure\":2,\"canonical_ids\":0,\"results\":[{\"message_id\":\"0:1497446946694113%253a2557f9fd7ecd\"},{\"error\":\"NotRegistered\"},{\"error\":\"InvalidRegistration\"}]}",
+      "headers": {
+        "Content-Type": "application/json; charset=UTF-8",
+        "Date": "Wed, 14 Jun 2017 13:29:06 GMT",
+        "Expires": "Wed, 14 Jun 2017 13:29:06 GMT",
+        "Cache-Control": "private, max-age=0",
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "Server": "GSE",
+        "Alt-Svc": "quic=\":443\"; ma=2592000; v=\"38,37,36,35\"",
+        "Accept-Ranges": "none",
+        "Vary": "Accept-Encoding",
+        "Transfer-Encoding": "chunked"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
