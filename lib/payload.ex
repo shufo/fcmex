@@ -10,7 +10,8 @@ defmodule Fcmex.Payload do
     :data,
     :priority,
     :time_to_live,
-    :collapse_key
+    :collapse_key,
+    :mutable_content
   ]
 
   @defaults [
