@@ -1,6 +1,7 @@
 defmodule FcmexTest do
   use ExUnit.Case, async: false
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
+  alias Fcmex.Payload
 
   setup_all do
     ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes")
@@ -142,7 +143,8 @@ defmodule FcmexTest do
         },
         priority: "normal",
         time_to_live: 1000,
-        collapse_key: "data"
+        collapse_key: "data",
+        mutable_content: true
       )
       # assert success and error count
       assert body["success"] == 1
@@ -174,5 +176,14 @@ defmodule FcmexTest do
       )
       assert Enum.count(result) == 11
     end
+  end
+
+  @tag :payload
+  test "payload test" do
+    payload = Payload.create(["test"], priority: "high")
+    refute Map.has_key?(payload, :mutable_content)
+
+    payload = Payload.create(["test"], priority: "high", mutable_content: true)
+    assert payload.mutable_content == true
   end
 end

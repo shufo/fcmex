@@ -30,7 +30,7 @@ defmodule Fcmex.Payload do
   def opts(to, opts) do
     @defaults
     |> put_destination(to)
-    |> Keyword.merge(opts |> Keyword.take(Keyword.keys(@defaults)))
+    |> Keyword.merge(opts)
     |> Enum.reject(& elem(&1, 1) |> is_nil)
     |> Enum.into(%{})
   end
