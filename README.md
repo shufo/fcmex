@@ -13,7 +13,7 @@ Add to dependencies
 
 ```elixir
 def deps do
-  [{:fcmex, "~> 0.1.1"}]
+  [{:fcmex, "~> 0.1.2"}]
 end
 ```
 
@@ -49,7 +49,7 @@ config :fcmex,
 - Send messsage to the topic
 
 ```elixir
-{:ok, body} = Fcmex.push("/topic_name",
+{:ok, body} = Fcmex.push("/topics/_name",
   notification: %{
     title: "foo",
     body: "bar",
