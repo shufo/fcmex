@@ -49,7 +49,7 @@ config :fcmex,
 - Send messsage to the topic
 
 ```elixir
-{:ok, body} = Fcmex.push("/topics/_name",
+{:ok, body} = Fcmex.push("/topics/topic_name",
   notification: %{
     title: "foo",
     body: "bar",
