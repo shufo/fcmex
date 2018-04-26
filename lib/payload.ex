@@ -10,8 +10,7 @@ defmodule Fcmex.Payload do
     :data,
     :priority,
     :time_to_live,
-    :collapse_key,
-    :mutable_content
+    :collapse_key
   ]
 
   @defaults [
@@ -19,7 +18,7 @@ defmodule Fcmex.Payload do
     data: %{},
     priority: "high",
     time_to_live: nil,
-    collapse_key: nil,
+    collapse_key: nil
   ]
 
   def create(to, opts) do
@@ -31,10 +30,12 @@ defmodule Fcmex.Payload do
     @defaults
     |> put_destination(to)
     |> Keyword.merge(opts)
-    |> Enum.reject(& elem(&1, 1) |> is_nil)
+    |> Enum.reject(&(elem(&1, 1) |> is_nil))
     |> Enum.into(%{})
   end
 
   def put_destination(opts, to) when is_binary(to), do: Keyword.merge(opts, to: to)
-  def put_destination(opts, to) when is_list(to) and length(to) > 0, do: Keyword.merge(opts, registration_ids: to)
+
+  def put_destination(opts, to) when is_list(to) and length(to) > 0,
+    do: Keyword.merge(opts, registration_ids: to)
 end
