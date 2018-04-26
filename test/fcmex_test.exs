@@ -186,4 +186,18 @@ defmodule FcmexTest do
     payload = Payload.create(["test"], priority: "high", mutable_content: true)
     assert payload.mutable_content == true
   end
+
+  test "unregistered token", context do
+    use_cassette "unregistered_token", match_requests_on: [:query, :request_body] do
+      assert Fcmex.unregistered?(context.token) == true
+    end
+  end
+
+  test "unregistered tokens", context do
+    use_cassette "unregistered_tokens", match_requests_on: [:query, :request_body] do
+      tokens = for _ <- 1..2000, do: context.token
+      assert Fcmex.filter_unregistered_tokens(tokens) |> length == 2000
+    end
+  end
+
 end

@@ -116,6 +116,17 @@ If one of request goes something wrong (e.g. timeout, server error),  then fcmex
 [ok: result, error: result2, ...]
 ```
 
+* Check if token is unregistered or not
+
+```elixir
+iex> Fcmex.unregistered?(token)
+true
+
+iex> tokens = ["token1", "token2", ...]
+iex> Fcmex.filter_unregistered_tokens(tokens)
+["token1"]
+```
+
 ### Options
 
 You can use these options as well.

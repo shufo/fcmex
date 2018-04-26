@@ -23,5 +23,41 @@ defmodule Fcmex do
     |> Flow.from_enumerable(stages: @max_concurrent_connection)
     |> Flow.map(&Request.perform(&1.to, opts))
     |> Enum.to_list
+  @doc ~s"""
+    Returns true when the given token is unregistered
+  """
+  @spec unregistered?(binary) :: boolean()
+  def unregistered?(token) do
+    push(token, data: %{})
+    |> extract_results
+    |> case do
+      ["NotRegistered"] -> true
+      _ -> false
+    end
   end
+
+  @doc ~s"""
+    Returns unregistered tokens
+  """
+  @spec filter_unregistered_tokens(list) :: list(binary)
+  def filter_unregistered_tokens(tokens) when is_list(tokens) do
+    tokens
+    |> Enum.chunk(1000, 1000, [])
+    |> Flow.from_enumerable(stages: @max_concurrent_connection)
+    |> Flow.map(&%{tokens: &1, results: Request.perform(&1, data: %{})})
+    |> Enum.to_list()
+    |> Enum.map(&[&1.tokens, &1.results |> extract_results()])
+    |> Enum.map(&(&1 |> Enum.zip()))
+    |> Enum.map(&(&1 |> Enum.filter(fn {_k, v} -> v == "NotRegistered" end)))
+    |> Enum.flat_map(&(&1 |> Enum.map(fn {k, _v} -> k end)))
+  end
+
+  defp extract_results({:ok, results} = _results) do
+    results
+    |> Map.get("results")
+    |> Enum.map(&Map.values(&1))
+    |> Enum.map(&List.first(&1))
+  end
+
+  defp extract_results({_, _} = _results), do: []
 end

@@ -2,25 +2,27 @@ defmodule Fcmex.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :fcmex,
-     version: "0.1.1",
-     elixir: "~> 1.4",
-     description: description(),
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     package: package(),
-     test_coverage: [tool: ExCoveralls],
-     preferred_cli_env: [
-       "coveralls": :test,
-       "coveralls.detail": :test,
-       "coveralls.post": :test,
-       "coveralls.html": :test,
-       vcr: :test,
-       "vcr.delete": :test,
-       "vcr.check": :test,
-       "vcr.show": :test
-     ],
-     deps: deps()]
+    [
+      app: :fcmex,
+      version: "0.1.2",
+      elixir: "~> 1.4",
+      description: description(),
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      package: package(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test,
+        vcr: :test,
+        "vcr.delete": :test,
+        "vcr.check": :test,
+        "vcr.show": :test
+      ],
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
