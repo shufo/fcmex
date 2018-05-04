@@ -13,7 +13,7 @@ Add to dependencies
 
 ```elixir
 def deps do
-  [{:fcmex, "~> 0.1.3"}]
+  [{:fcmex, "~> 0.2.0"}]
 end
 ```
 
@@ -32,8 +32,7 @@ config :fcmex,
   server_key: "a_example_key"
 ```
 
-
-- Send notification message to a device
+* Send notification message to a device
 
 ```elixir
 {:ok, body} = Fcmex.push("user_token",
@@ -46,7 +45,7 @@ config :fcmex,
 )
 ```
 
-- Send messsage to the topic
+* Send messsage to the topic
 
 ```elixir
 {:ok, body} = Fcmex.push("/topics/topic_name",
@@ -59,7 +58,7 @@ config :fcmex,
 )
 ```
 
-- Send data message to a device. Difference between notification message and data message is decribed in [here](https://developers.google.com/cloud-messaging/concept-options#notifications_and_data_messages).
+* Send data message to a device. Difference between notification message and data message is decribed in [here](https://developers.google.com/cloud-messaging/concept-options#notifications_and_data_messages).
 
 ```elixir
 {:ok, body} = Fcmex.push("user_token",
@@ -71,7 +70,7 @@ config :fcmex,
 )
 ```
 
-- You can use notification, and data as custom key-value store
+* You can use notification, and data as custom key-value store
 
 ```elixir
 {:ok, body} = Fcmex.push("user_token",
@@ -89,7 +88,7 @@ config :fcmex,
 )
 ```
 
-- Send message to multiple devices
+* Send message to multiple devices
 
 ```elixir
 [ok: body] = Fcmex.push(["user_token", "user_token_2"],
@@ -110,10 +109,38 @@ If specified tokens is over than 1000 tokens, then response is returned by keywo
 [ok: result, ok: result2, ...]
 ```
 
-If one of request goes something wrong (e.g. timeout, server error),  then fcmex returns results with `:error` keyword.
+If one of request goes something wrong (e.g. timeout, server error), then fcmex returns results with `:error` keyword.
 
 ```elixir
 [ok: result, error: result2, ...]
+```
+
+* Topic subscription
+
+```elixir
+# create a subscription
+{:ok, result} = Fcmex.Subscription.subscribe("topic_name", "fcm_token")
+
+# get subscription information related with specified token
+{:ok, result} = Fcmex.Subscription.get("fcm_token")
+iex> result
+ %{
+   "application" => "application_name",
+   "applicationVersion" => "3.6.1",
+   "authorizedEntity" => "1234567890",
+   "platform" => "IOS",
+   "rel" => %{"topics" => %{"test_topic" => %{"addDate" => "2018-05-03"}}},
+   "scope" => "*"
+ }}
+
+# create multiple subscriptions
+{:ok, result} = Fcmex.Subscription.subscribe("topic_name", ["fcm_token", "fcm_token2"])
+
+# unsubscribe a topic
+{:ok, result} = Fcmex.Subscription.unsubscribe("topic_name", "fcm_token")
+
+# batch unsubscribe from a topic
+{:ok, result} = Fcmex.Subscription.unsubscribe("topic_name", ["fcm_token", "fcm_token2"])
 ```
 
 * Check if token is unregistered or not
@@ -131,9 +158,9 @@ iex> Fcmex.filter_unregistered_tokens(tokens)
 
 You can use these options as well.
 
-- `priority`: `default: "high"`
-- `collapse_key`: `default: nil`
-- `time_to_live`: `default: nil`
+* `priority`: `default: "high"`
+* `collapse_key`: `default: nil`
+* `time_to_live`: `default: nil`
 
 ```elixir
 Fcmex.push(["user_token", "user_token_2"],
@@ -152,6 +179,7 @@ Fcmex.push(["user_token", "user_token_2"],
 A more detail of parameters are available on [Firebase doc page](https://firebase.google.com/docs/cloud-messaging/concept-options).
 
 ## Testing
+
 If you start contributing and you want to run mix test, first you need to export FCM_SERVER_KEY environment variable in the same shell as the one you will be running mix test in.
 
 ```bash
@@ -161,11 +189,11 @@ mix test
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+1.  Fork it
+2.  Create your feature branch (`git checkout -b my-new-feature`)
+3.  Commit your changes (`git commit -am 'Add some feature'`)
+4.  Push to the branch (`git push origin my-new-feature`)
+5.  Create new Pull Request
 
 ## License
 
