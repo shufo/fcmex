@@ -7,6 +7,12 @@ defmodule FcmexTest do
     ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes")
     ExVCR.Config.filter_request_headers("Authorization")
     ExVCR.Config.filter_sensitive_data(~s("[a-zA-Z0-9:_-]{20,4000}?"), ~s("FCM_TOKEN"))
+    ExVCR.Config.filter_sensitive_data(~s([a-zA-Z0-9:_-]{50,4000}), ~s(FCM_TOKEN))
+
+    ExVCR.Config.filter_sensitive_data(
+      ~s(\\"application\\":\\".*?\\"),
+      ~s(\"application\":\"APPLICATION\")
+    )
 
     HTTPoison.start()
 
@@ -214,4 +220,58 @@ defmodule FcmexTest do
     end
   end
 
+  @tag :subscription
+  test "get token information", context do
+    use_cassette "get_subscription_token_info", match_requests_on: [:query, :request_body] do
+      {:ok, result} = Fcmex.Subscription.get(context.token)
+      assert result["application"]
+      assert result["applicationVersion"]
+      assert result["platform"]
+      assert result["scope"]
+    end
+  end
+
+  @tag :subscription
+  @topic "fcmex_test_topic"
+  test "add token to topic subscription", context do
+    use_cassette "add_token_to_subscription", match_requests_on: [:query, :request_body] do
+      {:ok, result} = Fcmex.Subscription.subscribe(@topic, context.token)
+      assert result == %{}
+    end
+  end
+
+  @tag :subscription
+  @topic "fcmex_test_topic"
+  test "batch add subscription", context do
+    use_cassette "batch_subscribe_token_to_subscription",
+      match_requests_on: [:query, :request_body] do
+      {:ok, result} = Fcmex.Subscription.subscribe(@topic, [context.token, context.token])
+      assert result["results"] == [%{}, %{}]
+    end
+  end
+
+  @tag :subscription
+  @topic "fcmex_test_topic"
+  test "unsubscribe token from topic", context do
+    use_cassette "remove_token_from_subscription", match_requests_on: [:query, :request_body] do
+      {:ok, result} = Fcmex.Subscription.subscribe(@topic, context.token)
+      assert result == %{}
+
+      {:ok, result} = Fcmex.Subscription.unsubscribe(@topic, context.token)
+      assert result["results"] == [%{}]
+    end
+  end
+
+  @tag :subscription
+  @topic "fcmex_test_topic"
+  test "unsubscribe tokens from topic", context do
+    use_cassette "batch_remove_token_from_subscription",
+      match_requests_on: [:query, :request_body] do
+      {:ok, result} = Fcmex.Subscription.subscribe(@topic, [context.token, context.token])
+      assert result["results"] == [%{}, %{}]
+
+      {:ok, result} = Fcmex.Subscription.unsubscribe(@topic, [context.token, context.token])
+      assert result["results"] == [%{}, %{}]
+    end
+  end
 end
