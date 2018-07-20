@@ -5,7 +5,7 @@ defmodule Fcmex.Mixfile do
     [
       app: :fcmex,
       version: "0.2.1",
-      elixir: "~> 1.4",
+      elixir: "~> 1.5",
       description: description(),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
@@ -40,7 +40,7 @@ defmodule Fcmex.Mixfile do
     [
       {:httpoison, ">= 0.0.0"},
       {:poison, ">= 0.0.0"},
-      {:flow, "~> 0.13.0"},
+      {:flow, "~> 0.14.0"},
       {:retry, "~> 0.10.0"},
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev},
