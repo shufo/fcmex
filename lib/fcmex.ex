@@ -20,7 +20,7 @@ defmodule Fcmex do
   def push(to, opts) when is_list(to) do
     to
     |> Enum.reject(&is_nil(&1))
-    |> Enum.chunk(1000, 1000, [])
+    |> Enum.chunk_every(1000)
     |> Enum.map(&%{to: &1})
     |> Flow.from_enumerable(stages: @max_concurrent_connection)
     |> Flow.map(&Request.perform(&1.to, opts))
@@ -46,7 +46,7 @@ defmodule Fcmex do
   @spec filter_unregistered_tokens(list) :: list(binary)
   def filter_unregistered_tokens(tokens) when is_list(tokens) do
     tokens
-    |> Enum.chunk(1000, 1000, [])
+    |> Enum.chunk_every(1000)
     |> Flow.from_enumerable(stages: @max_concurrent_connection)
     |> Flow.map(&%{tokens: &1, results: Request.perform(&1, data: %{})})
     |> Enum.to_list()
