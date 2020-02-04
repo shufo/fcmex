@@ -203,8 +203,9 @@ defmodule FcmexTest do
     payload = Payload.create(["test"], priority: "high")
     refute Map.has_key?(payload, :mutable_content)
 
-    payload = Payload.create(["test"], priority: "high", mutable_content: true)
+    payload = Payload.create(["test"], priority: "high", mutable_content: true, content_available: true)
     assert payload.mutable_content == true
+    assert payload.content_available == true
   end
 
   test "unregistered token", context do

@@ -161,6 +161,7 @@ You can use these options as well.
 * `priority`: `default: "high"`
 * `collapse_key`: `default: nil`
 * `time_to_live`: `default: nil`
+* `content_available`: `default: false`
 
 ```elixir
 Fcmex.push(["user_token", "user_token_2"],
@@ -172,7 +173,8 @@ Fcmex.push(["user_token", "user_token_2"],
   },
   priority: "normal",
   collapse_key: "data",
-  time_to_live: 1000
+  time_to_live: 1000,
+  content_available: true
 )
 ```
 
