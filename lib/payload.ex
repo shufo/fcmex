@@ -10,7 +10,8 @@ defmodule Fcmex.Payload do
     :data,
     :priority,
     :time_to_live,
-    :collapse_key
+    :collapse_key,
+    :content_available
   ]
 
   @defaults [
@@ -18,7 +19,8 @@ defmodule Fcmex.Payload do
     data: %{},
     priority: "high",
     time_to_live: nil,
-    collapse_key: nil
+    collapse_key: nil,
+    content_available: nil
   ]
 
   def create(to, opts) do
