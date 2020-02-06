@@ -1,7 +1,7 @@
 [
   {
     "request": {
-      "body": "{\"to\":\"FCM_TOKEN\",\"time_to_live\":null,\"registration_ids\":null,\"priority\":\"high\",\"notification\":{},\"data\":{},\"content_available\":false,\"collapse_key\":null}",
+      "body": "{\"to\":\"FCM_TOKEN\",\"time_to_live\":null,\"registration_ids\":null,\"priority\":\"high\",\"notification\":{},\"data\":{},\"content_available\":null,\"collapse_key\":null}",
       "headers": {
         "Content-Type": "application/json",
         "Authorization": "***"

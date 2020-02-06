@@ -20,7 +20,7 @@ defmodule Fcmex.Payload do
     priority: "high",
     time_to_live: nil,
     collapse_key: nil,
-    content_available: false
+    content_available: nil
   ]
 
   def create(to, opts) do
