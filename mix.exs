@@ -42,7 +42,7 @@ defmodule Fcmex.Mixfile do
       {:poison, ">= 0.0.0"},
       {:flow, "~> 1.0.0"},
       {:retry, "~> 0.13.0"},
-      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.3", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:exvcr, ">= 0.0.0", only: [:test, :dev]},
       {:excoveralls, ">= 0.0.0", only: :test}
