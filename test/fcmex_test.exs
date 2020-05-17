@@ -3,6 +3,8 @@ defmodule FcmexTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
   alias Fcmex.Payload
 
+  doctest Fcmex.Util
+
   setup_all do
     ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes")
     ExVCR.Config.filter_request_headers("Authorization")
