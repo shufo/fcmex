@@ -58,7 +58,7 @@ config :fcmex,
 )
 ```
 
-* Send data message to a device. Difference between notification message and data message is decribed in [here](https://developers.google.com/cloud-messaging/concept-options#notifications_and_data_messages).
+* Send data message to a device. Difference between notification message and data message is decribed in [here](https://firebase.google.com/docs/cloud-messaging/concept-options#notifications_and_data_messages).
 
 ```elixir
 {:ok, body} = Fcmex.push("user_token",
