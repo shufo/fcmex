@@ -18,4 +18,8 @@ defmodule Fcmex.Config do
   def retrieve_on_run_time(key) do
     System.get_env(key)
   end
+
+  def httpoison_options() do
+    Application.get_env(:fcmex, :httpoison_options, [])
+  end
 end
