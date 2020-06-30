@@ -180,6 +180,16 @@ Fcmex.push(["user_token", "user_token_2"],
 
 A more detail of parameters are available on [Firebase doc page](https://firebase.google.com/docs/cloud-messaging/concept-options).
 
+### Configuration
+
+You can set httpoison option as below.
+
+```elixir
+config :fcmex,
+  fcm_server_key: {:system, "FCM_SERVER_KEY"} || System.get_env("FCM_SERVER_KEY"),
+  httpoison_options: [ssl: [{:versions, [:'tlsv1.2']}], recv_timeout: 500]
+```
+
 ## Testing
 
 If you start contributing and you want to run mix test, first you need to export FCM_SERVER_KEY environment variable in the same shell as the one you will be running mix test in.
