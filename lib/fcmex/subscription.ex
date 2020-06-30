@@ -11,14 +11,23 @@ defmodule Fcmex.Subscription do
   @endpoint "/info"
   def get(token) do
     request(fn ->
-      HTTPoison.get("#{@base_url}#{@endpoint}/#{token}?details=true", Config.new(), Config.httpoison_options())
+      HTTPoison.get(
+        "#{@base_url}#{@endpoint}/#{token}?details=true",
+        Config.new(),
+        Config.httpoison_options()
+      )
     end)
   end
 
   @endpoint "/v1"
   def subscribe(topic, token) when is_binary(token) do
     request(fn ->
-      HTTPoison.post("#{@base_url}#{@endpoint}/#{token}/rel/topics/#{topic}", "", Config.new(), Config.httpoison_options())
+      HTTPoison.post(
+        "#{@base_url}#{@endpoint}/#{token}/rel/topics/#{topic}",
+        "",
+        Config.new(),
+        Config.httpoison_options()
+      )
     end)
   end
 
@@ -30,7 +39,12 @@ defmodule Fcmex.Subscription do
     }
 
     request(fn ->
-      HTTPoison.post("#{@base_url}#{@endpoint}:batchAdd", body |> Poison.encode!(), Config.new(), Config.httpoison_options())
+      HTTPoison.post(
+        "#{@base_url}#{@endpoint}:batchAdd",
+        body |> Poison.encode!(),
+        Config.new(),
+        Config.httpoison_options()
+      )
     end)
   end
 

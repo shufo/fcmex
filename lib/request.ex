@@ -17,7 +17,12 @@ defmodule Fcmex.Request do
 
   defp post(%Payload{} = payload) do
     retry with: exp_backoff() |> randomize |> expiry(10_000) do
-      HTTPoison.post(@fcm_endpoint, payload |> Poison.encode!(), Config.new(), Config.httpoison_options())
+      HTTPoison.post(
+        @fcm_endpoint,
+        payload |> Poison.encode!(),
+        Config.new(),
+        Config.httpoison_options()
+      )
     after
       result -> result
     else

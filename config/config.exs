@@ -29,4 +29,6 @@ use Mix.Config
 #
 #     import_config "#{Mix.env}.exs"
 
-config :fcmex, fcm_server_key: {:system, "FCM_SERVER_KEY"} || System.get_env("FCM_SERVER_KEY"), httpoison_options: []
+config :fcmex,
+  fcm_server_key: {:system, "FCM_SERVER_KEY"} || System.get_env("FCM_SERVER_KEY"),
+  httpoison_options: []

@@ -30,9 +30,9 @@ defmodule Fcmex.Util do
     body
     |> Poison.decode()
     |> case do
-         {:ok, decoded} -> {:error, decoded}
-         {:error, _} -> {:error, body}
-       end
+      {:ok, decoded} -> {:error, decoded}
+      {:error, _} -> {:error, body}
+    end
   end
 
   def parse_result({:ok, %Response{status_code: status, body: body}})

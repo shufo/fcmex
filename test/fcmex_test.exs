@@ -41,9 +41,11 @@ defmodule FcmexTest do
   test "request with single invalid registration token", context do
     use_cassette "single_token_invalid_registration" do
       assert {:ok, body} =
-               Fcmex.push(context.invalid_registration_token, data: %{
-                 foo: "bar"
-               })
+               Fcmex.push(context.invalid_registration_token,
+                 data: %{
+                   foo: "bar"
+                 }
+               )
 
       assert body["success"] == 0
       assert body["failure"] == 1
@@ -54,9 +56,11 @@ defmodule FcmexTest do
   test "request with single not registered token", context do
     use_cassette "single_token_not_registered" do
       assert {:ok, body} =
-               Fcmex.push(context.not_registered_token, data: %{
-                 foo: "bar"
-               })
+               Fcmex.push(context.not_registered_token,
+                 data: %{
+                   foo: "bar"
+                 }
+               )
 
       assert body["success"] == 0
       assert body["failure"] == 1
@@ -114,12 +118,14 @@ defmodule FcmexTest do
   test "request notification message", context do
     use_cassette "single_token_with_notification_message" do
       assert {:ok, body} =
-               Fcmex.push(context.token, notification: %{
-                 title: "foo",
-                 body: "bar",
-                 click_action: "open_app",
-                 icon: "new"
-               })
+               Fcmex.push(context.token,
+                 notification: %{
+                   title: "foo",
+                   body: "bar",
+                   click_action: "open_app",
+                   icon: "new"
+                 }
+               )
 
       # assert success and error count
       assert body["success"] == 1
@@ -178,10 +184,12 @@ defmodule FcmexTest do
       tokens = for _ <- 1..1500, do: context.token
 
       [ok: body, ok: body2] =
-        Fcmex.push(tokens, data: %{
-          first_name: "Sophia",
-          last_name: "McGuire"
-        })
+        Fcmex.push(tokens,
+          data: %{
+            first_name: "Sophia",
+            last_name: "McGuire"
+          }
+        )
 
       # assert success and error count
       assert body["success"] == 1000 || 500
@@ -191,10 +199,12 @@ defmodule FcmexTest do
       tokens = for _ <- 1..11_000, do: context.token
 
       result =
-        Fcmex.push(tokens, data: %{
-          first_name: "Sophia",
-          last_name: "McGuire"
-        })
+        Fcmex.push(tokens,
+          data: %{
+            first_name: "Sophia",
+            last_name: "McGuire"
+          }
+        )
 
       assert Enum.count(result) == 11
     end
@@ -205,7 +215,9 @@ defmodule FcmexTest do
     payload = Payload.create(["test"], priority: "high")
     refute Map.has_key?(payload, :mutable_content)
 
-    payload = Payload.create(["test"], priority: "high", mutable_content: true, content_available: true)
+    payload =
+      Payload.create(["test"], priority: "high", mutable_content: true, content_available: true)
+
     assert payload.mutable_content == true
     assert payload.content_available == true
   end
