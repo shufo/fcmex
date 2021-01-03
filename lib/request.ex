@@ -18,7 +18,7 @@ defmodule Fcmex.Request do
   defp post(%Payload{} = payload, opts) do
     endpoint = Keyword.get(opts, :endpoint, @fcm_endpoint)
 
-    retry with: exp_backoff() |> randomize |> expiry(10_000) do
+    retry with: exponential_backoff() |> randomize |> expiry(10_000) do
       HTTPoison.post(
         endpoint,
         payload |> Poison.encode!(),
