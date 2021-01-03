@@ -11,6 +11,8 @@ matrix:
       otp_release: 21.0
     - elixir: 1.9
       otp_release: 22.0
+    - elixir: 1.10
+      otp_release: 23.0
 sudo: false
 env:
   - MIX_ENV=test FCM_SERVER_KEY=non_empty_secret_key_string
