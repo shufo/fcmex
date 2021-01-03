@@ -13,7 +13,7 @@ Add to dependencies
 
 ```elixir
 def deps do
-  [{:fcmex, "~> 0.4.1"}]
+  [{:fcmex, "~> 0.5.0"}]
 end
 ```
 
