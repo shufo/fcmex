@@ -26,6 +26,7 @@ jobs:
         with:
           otp-version: ${{matrix.otp}}
           elixir-version: ${{matrix.elixir}}
+          experimental-otp: true
       - run: mix deps.get
       - run: mix test
       - run: mix coveralls.github
