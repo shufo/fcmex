@@ -207,6 +207,11 @@ mix test
 4.  Push to the branch (`git push origin my-new-feature`)
 5.  Create new Pull Request
 
+## Contributors
+
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
+
 ## License
 
 MIT
