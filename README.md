@@ -210,6 +210,51 @@ mix test
 ## Contributors
 
 <!-- readme: collaborators,contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/shufo">
+            <img src="https://avatars.githubusercontent.com/u/1641039?v=4" width="100;" alt="shufo"/>
+            <br />
+            <sub><b>Shuhei Hayashibara</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/nukosuke">
+            <img src="https://avatars.githubusercontent.com/u/17716649?v=4" width="100;" alt="nukosuke"/>
+            <br />
+            <sub><b>Nukosuke</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/nietaki">
+            <img src="https://avatars.githubusercontent.com/u/140347?v=4" width="100;" alt="nietaki"/>
+            <br />
+            <sub><b>Jacek Królikowski</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/qgadrian">
+            <img src="https://avatars.githubusercontent.com/u/489004?v=4" width="100;" alt="qgadrian"/>
+            <br />
+            <sub><b>Adrián Quintás</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Fabi755">
+            <img src="https://avatars.githubusercontent.com/u/4510679?v=4" width="100;" alt="Fabi755"/>
+            <br />
+            <sub><b>Fabian Keunecke</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/mbramson">
+            <img src="https://avatars.githubusercontent.com/u/6462927?v=4" width="100;" alt="mbramson"/>
+            <br />
+            <sub><b>Mathew Bramson</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: collaborators,contributors -end -->
 
 ## License
