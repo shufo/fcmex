@@ -40,7 +40,7 @@ defmodule Fcmex.Mixfile do
     [
       {:httpoison, ">= 0.0.0"},
       {:poison, ">= 0.0.0"},
-      {:flow, "~> 1.1.0"},
+      {:flow, "~> 1.2.0"},
       {:retry, "~> 0.17.0"},
       {:credo, "~> 1.3", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev},
