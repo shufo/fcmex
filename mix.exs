@@ -5,7 +5,7 @@ defmodule Fcmex.Mixfile do
     [
       app: :fcmex,
       version: "0.5.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.9",
       description: description(),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
