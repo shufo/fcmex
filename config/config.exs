@@ -1,6 +1,6 @@
 # This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
-use Mix.Config
+# and its dependencies with the aid of the Config module.
+import Config
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :fcm, key: :value
+#     config :fcmex, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:fcm, :key)
+#     Application.get_env(:fcmex, :key)
 #
 # Or configure a 3rd-party app:
 #
