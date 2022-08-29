@@ -41,7 +41,7 @@ defmodule Fcmex.Subscription do
     request(fn ->
       HTTPoison.post(
         "#{@base_url}#{@endpoint}:batchAdd",
-        body |> Poison.encode!(),
+        body |> Config.json_library().encode!(),
         Config.new(),
         Config.httpoison_options()
       )
@@ -58,7 +58,12 @@ defmodule Fcmex.Subscription do
     url = "#{@base_url}#{@endpoint}:batchRemove"
 
     request(fn ->
-      HTTPoison.post(url, body |> Poison.encode!(), Config.new(), Config.httpoison_options())
+      HTTPoison.post(
+        url,
+        body |> Config.json_library().encode!(),
+        Config.new(),
+        Config.httpoison_options()
+      )
     end)
   end
 
@@ -72,7 +77,12 @@ defmodule Fcmex.Subscription do
     url = "#{@base_url}#{@endpoint}:batchRemove"
 
     request(fn ->
-      HTTPoison.post(url, body |> Poison.encode!(), Config.new(), Config.httpoison_options())
+      HTTPoison.post(
+        url,
+        body |> Config.json_library().encode!(),
+        Config.new(),
+        Config.httpoison_options()
+      )
     end)
   end
 

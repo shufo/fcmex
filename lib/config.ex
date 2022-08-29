@@ -22,4 +22,8 @@ defmodule Fcmex.Config do
   def httpoison_options() do
     Application.get_env(:fcmex, :httpoison_options, [])
   end
+
+  def json_library do
+    Application.get_env(:fcmex, :json_library, Poison)
+  end
 end

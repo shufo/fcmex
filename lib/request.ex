@@ -21,7 +21,7 @@ defmodule Fcmex.Request do
     retry with: exponential_backoff() |> randomize |> expiry(10_000) do
       HTTPoison.post(
         endpoint,
-        payload |> Poison.encode!(),
+        payload |> Config.json_library().encode!(),
         Config.new(),
         Config.httpoison_options()
       )

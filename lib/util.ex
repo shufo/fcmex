@@ -5,6 +5,7 @@ defmodule Fcmex.Util do
 
   alias HTTPoison.Response
   alias HTTPoison.Error
+  alias Fcmex.Config
 
   @success_status 200..299
   @client_error_status 400..499
@@ -16,19 +17,19 @@ defmodule Fcmex.Util do
   ## Examples
 
       iex> Fcmex.Util.parse_result({:ok, %HTTPoison.Response{status_code: 200, body: "{\"a\": 1}"}})
-      {:ok, Poison.decode!("{\"a\": 1}")}
+      {:ok, %{"a" => 1}}
 
       iex> Fcmex.Util.parse_result({:error, %HTTPoison.Error{id: 1, reason: "something goes wrong"}})
       {:error, %HTTPoison.Error{id: 1, reason: "something goes wrong"}}
   """
   def parse_result({:ok, %Response{status_code: status, body: body}})
       when status in @success_status,
-      do: {:ok, Poison.decode!(body)}
+      do: {:ok, Config.json_library().decode!(body)}
 
   def parse_result({:ok, %Response{status_code: status, body: body}})
       when status in @client_error_status do
     body
-    |> Poison.decode()
+    |> Config.json_library().decode()
     |> case do
       {:ok, decoded} -> {:error, decoded}
       {:error, _} -> {:error, body}
