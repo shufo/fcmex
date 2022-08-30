@@ -190,6 +190,23 @@ config :fcmex,
   httpoison_options: [ssl: [{:versions, [:'tlsv1.2']}], recv_timeout: 500]
 ```
 
+`fcmex` uses `Poison` to encode/decode JSON by default. If you want to use alternative library like [`Jason`](https://github.com/michalmuskala/jason), add the package to `mix.exs` and set the module to config.
+
+```elixir
+# mix.exs
+def deps do
+ [
+   ...,
+   {:jason, "~> 1.3"}
+ ]
+end
+```
+
+```elixir
+# config/config.exs
+config :fcmex, :json_library, Jason
+```
+
 ## Testing
 
 If you start contributing and you want to run mix test, first you need to export FCM_SERVER_KEY environment variable in the same shell as the one you will be running mix test in.
