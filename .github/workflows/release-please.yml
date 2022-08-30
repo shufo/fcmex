@@ -8,7 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
           release-type: elixir
           package-name: fcmex
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
+      - uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: actions/setup-elixir@v1
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          otp-version: 23.0
+          elixir-version: "1.13.x"
+          experimental-otp: true
+      - run: mix deps.get
+        if: ${{ steps.release.outputs.release_created }}
+      - name: publish to hex
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
+        run: |
+          mix hex.publish --yes
