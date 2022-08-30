@@ -19,6 +19,19 @@
 
 
 
+## [0.6.0](https://github.com/shufo/fcmex/compare/0.5.0...v0.6.0) (2022-08-30)
+
+
+### Miscellaneous
+
+* 🤖 bump excoverall to >= 0.14.0 ([5528b6b](https://github.com/shufo/fcmex/commit/5528b6ba7fc496a9acabf34b412d15c90d7e8f1a))
+* 🤖 drop support for elixir 1.8 ([c030535](https://github.com/shufo/fcmex/commit/c030535b29e6297e2b0efca58d97cdcd82c43258))
+* 🤖 update certifi to follow CA update ([ded8fca](https://github.com/shufo/fcmex/commit/ded8fca025fc6bf03e287d1a4b0985738d1b538d))
+* **deps:** add renovate.json ([b711b4a](https://github.com/shufo/fcmex/commit/b711b4a340d6e02c596ec7c05a95aad82dfe4a8c))
+* **deps:** update actions/checkout action to v3 ([5e28e02](https://github.com/shufo/fcmex/commit/5e28e0224f4d4cc19cc28444422f474647247a52))
+* **deps:** update dependency flow to ~> 1.2.0 ([e53f1e7](https://github.com/shufo/fcmex/commit/e53f1e7538ace27a15c3f1b765f096686656a733))
+* **deps:** update dependency retry to ~> 0.17.0 ([166a746](https://github.com/shufo/fcmex/commit/166a746ca06bd27b317afda133148a9e525709ef))
+
 ## [0.4.1](https://github.com/shufo/fcmex/compare/0.4.0...0.4.1) (2020-07-27)
 
 
@@ -41,6 +54,3 @@
 
 
 # 0.2.0 (2018-05-04)
-
-
-
