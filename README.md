@@ -32,7 +32,7 @@ config :fcmex,
   server_key: "a_example_key"
 ```
 
-* Send notification message to a device
+- Send notification message to a device
 
 ```elixir
 {:ok, body} = Fcmex.push("user_token",
@@ -45,7 +45,7 @@ config :fcmex,
 )
 ```
 
-* Send messsage to the topic
+- Send messsage to the topic
 
 ```elixir
 {:ok, body} = Fcmex.push("/topics/topic_name",
@@ -58,7 +58,7 @@ config :fcmex,
 )
 ```
 
-* Send data message to a device. Difference between notification message and data message is decribed in [here](https://firebase.google.com/docs/cloud-messaging/concept-options#notifications_and_data_messages).
+- Send data message to a device. Difference between notification message and data message is decribed in [here](https://firebase.google.com/docs/cloud-messaging/concept-options#notifications_and_data_messages).
 
 ```elixir
 {:ok, body} = Fcmex.push("user_token",
@@ -70,7 +70,7 @@ config :fcmex,
 )
 ```
 
-* You can use notification, and data as custom key-value store
+- You can use notification, and data as custom key-value store
 
 ```elixir
 {:ok, body} = Fcmex.push("user_token",
@@ -88,7 +88,7 @@ config :fcmex,
 )
 ```
 
-* Send message to multiple devices
+- Send message to multiple devices
 
 ```elixir
 [ok: body] = Fcmex.push(["user_token", "user_token_2"],
@@ -115,7 +115,7 @@ If one of request goes something wrong (e.g. timeout, server error), then fcmex 
 [ok: result, error: result2, ...]
 ```
 
-* Topic subscription
+- Topic subscription
 
 ```elixir
 # create a subscription
@@ -143,7 +143,7 @@ iex> result
 {:ok, result} = Fcmex.Subscription.unsubscribe("topic_name", ["fcm_token", "fcm_token2"])
 ```
 
-* Check if token is unregistered or not
+- Check if token is unregistered or not
 
 ```elixir
 iex> Fcmex.unregistered?(token)
@@ -158,10 +158,10 @@ iex> Fcmex.filter_unregistered_tokens(tokens)
 
 You can use these options as well.
 
-* `priority`: `default: "high"`
-* `collapse_key`: `default: nil`
-* `time_to_live`: `default: nil`
-* `content_available`: `default: nil`
+- `priority`: `default: "high"`
+- `collapse_key`: `default: nil`
+- `time_to_live`: `default: nil`
+- `content_available`: `default: nil`
 
 ```elixir
 Fcmex.push(["user_token", "user_token_2"],
