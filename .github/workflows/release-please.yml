@@ -15,7 +15,7 @@ jobs:
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
       - uses: actions/checkout@v3
         if: ${{ steps.release.outputs.release_created }}
-      - uses: actions/setup-elixir@v1
+      - uses: erlef/setup-elixir@v1
         if: ${{ steps.release.outputs.release_created }}
         with:
           otp-version: 23.0
