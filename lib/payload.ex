@@ -6,6 +6,7 @@ defmodule Fcmex.Payload do
   defstruct [
     :to,
     :registration_ids,
+    :condition,
     :notification,
     :data,
     :priority,
@@ -35,6 +36,8 @@ defmodule Fcmex.Payload do
     |> Enum.reject(&(elem(&1, 1) |> is_nil))
     |> Enum.into(%{})
   end
+
+  def put_destination(opts, "CONDITION:" <> to) when is_binary(to), do: opts
 
   def put_destination(opts, to) when is_binary(to), do: Keyword.merge(opts, to: to)
 
