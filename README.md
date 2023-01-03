@@ -1,6 +1,6 @@
 # Fcmex
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/shufo/fcmex/CI)](https://github.com/shufo/fcmex/actions?query=workflow%3ACI)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/shufo/fcmex/ci.yml)](https://github.com/shufo/fcmex/actions?query=workflow%3ACI)
 [![Hex.pm](https://img.shields.io/hexpm/v/fcmex.svg)](https://hex.pm/packages/fcmex)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-9768d1.svg)](https://hexdocs.pm/fcmex)
 [![Coverage Status](https://coveralls.io/repos/github/shufo/fcmex/badge.svg?branch=master)](https://coveralls.io/github/shufo/fcmex?branch=master)
