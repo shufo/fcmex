@@ -17,7 +17,7 @@ jobs:
           - elixir: "1.14.x"
             otp: "25.0"
           - elixir: "1.15.x"
-            otp: "26.0"
+            otp: "25.0"
     env:
       MIX_ENV: test
       FCM_SERVER_KEY: test
