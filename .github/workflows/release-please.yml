@@ -15,11 +15,11 @@ jobs:
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
       - uses: actions/checkout@v3
         if: ${{ steps.release.outputs.release_created }}
-      - uses: erlef/setup-elixir@v1
+      - uses: erlef/setup-beam@v1
         if: ${{ steps.release.outputs.release_created }}
         with:
-          otp-version: 23.0
-          elixir-version: "1.13.x"
+          otp-version: 25.0
+          elixir-version: "1.15.x"
           experimental-otp: true
       - run: mix deps.get
         if: ${{ steps.release.outputs.release_created }}
