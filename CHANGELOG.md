@@ -19,6 +19,19 @@
 
 
 
+## [0.6.2](https://github.com/shufo/fcmex/compare/v0.6.1...v0.6.2) (2023-08-16)
+
+
+### Bug Fixes
+
+* 🐛 use erlef/setup-beam for release action ([f92d6ce](https://github.com/shufo/fcmex/commit/f92d6ce3a463313faf305d1c30b0d79b52722d4d))
+
+
+### Miscellaneous
+
+* release 0.6.1 ([47c4fff](https://github.com/shufo/fcmex/commit/47c4fffefaa3a4553d4ba542aa5154e75b4b9699))
+* release 0.6.2 ([6e55f67](https://github.com/shufo/fcmex/commit/6e55f67da99f20767423813a4f7ac2e376a47516))
+
 ## [0.6.1](https://github.com/shufo/fcmex/compare/v0.6.0...v0.6.1) (2023-08-16)
 
 
