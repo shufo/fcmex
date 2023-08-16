@@ -4,7 +4,7 @@ defmodule Fcmex.Mixfile do
   def project do
     [
       app: :fcmex,
-      version: "0.6.0",
+      version: "0.6.1",
       elixir: "~> 1.9",
       description: description(),
       build_embedded: Mix.env() == :prod,
