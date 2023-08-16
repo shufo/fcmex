@@ -19,6 +19,14 @@
 
 
 
+## [0.6.1](https://github.com/shufo/fcmex/compare/v0.6.0...v0.6.1) (2023-08-16)
+
+
+### Miscellaneous
+
+* 🤖 bump hackney to 1.18.1 ([c319404](https://github.com/shufo/fcmex/commit/c319404d50c06588fbb9ec54fad84c389dcf663c))
+* **deps:** update dependency retry to ~&gt; 0.18.0 ([3b4ed11](https://github.com/shufo/fcmex/commit/3b4ed1124943d5cb1e71af14473efd32675ec0f9))
+
 ## [0.6.0](https://github.com/shufo/fcmex/compare/0.5.0...v0.6.0) (2022-08-30)
 
 
