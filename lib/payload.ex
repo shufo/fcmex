@@ -6,6 +6,7 @@ defmodule Fcmex.Payload do
   defstruct [
     :to,
     :registration_ids,
+    :condition,
     :notification,
     :data,
     :priority,
@@ -30,14 +31,19 @@ defmodule Fcmex.Payload do
 
   def opts(to, opts) do
     @defaults
-    |> put_destination(to)
     |> Keyword.merge(opts)
-    |> Enum.reject(&(elem(&1, 1) |> is_nil))
     |> Enum.into(%{})
+    |> put_destination(to)
+    |> Enum.reject(fn {_, v} -> is_nil(v) end)
+    |> Map.new()
   end
 
-  def put_destination(opts, to) when is_binary(to), do: Keyword.merge(opts, to: to)
+
+
+  def put_destination(%{condition: condition} = opts , _to) when is_binary(condition), do: opts
+
+  def put_destination(opts, to) when is_binary(to), do: Map.put(opts, :to, to)
 
   def put_destination(opts, to) when is_list(to) and length(to) > 0,
-    do: Keyword.merge(opts, registration_ids: to)
+    do: Map.put(opts, :registration_ids, to)
 end
