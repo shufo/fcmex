@@ -45,7 +45,7 @@ defmodule Fcmex.Mixfile do
       {:credo, "~> 1.3", only: [:dev, :test], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:exvcr, ">= 0.0.0", only: [:test, :dev]},
-      {:excoveralls, "~> 0.14 and >= 0.14.4", only: [:dev, :test]}
+      {:excoveralls, "== 0.18.0", only: [:dev, :test]}
     ]
   end
 
