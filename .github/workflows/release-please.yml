@@ -19,7 +19,7 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         with:
           otp-version: 25.0
-          elixir-version: "1.15.x"
+          elixir-version: "1.20.x"
           experimental-otp: true
       - run: mix deps.get
         if: ${{ steps.release.outputs.release_created }}
